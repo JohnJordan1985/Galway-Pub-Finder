@@ -10,7 +10,7 @@ var Pub = function(name, lat, lng, description, imgUrl, rating, ratingUrl, url) 
 	this.ratingURL = ratingUrl;
 	this.description = description;
 	this.displayOnList=ko.observable(true);
-  this.infoWindowContent = `<div id="content" style="max-width: 250px"><a href=${self.url} target="_blank"><div style="display: inline-block" id="titleContent"><img style="padding-bottom: 1px" src=${self.imgURL} alt="Picture of pub"><p><b>Yelp Rating:</b></p>
+  this.infoWindowContent = `<div id="content" style="max-width: 300px"><a href=${self.url} target="_blank"><div style="display: inline-block" id="titleContent"><img style="padding-bottom: 1px" src=${self.imgURL} alt="Picture of pub"><p><b>Yelp Rating:</b></p>
   <img src=${self.ratingURL} alt=${self.rating} align="right"><h1 id='name'> ${self.name} </h1></div></a><div id='bodyContent'>${self.description}</div></div>`;
 };
 

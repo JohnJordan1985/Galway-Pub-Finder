@@ -79,7 +79,9 @@ var ViewModel = function(){
 	this.checkSubmittedPub = function(){
 		//closes any currently open infowindow from previously successful pub searches
 		infoWindow.close();
-		self.noPubFoundBoolean(true);
+		// This line was causing noPubFound message to display if there was a matching pub,
+		// but there wasn't an exact search term match, e.g. 'The Dail Bar' differs from 'Dail'
+		//self.noPubFoundBoolean(true);
 		self.submittedPub(self.userSearchInput());
 		pubModelArray().forEach(function(pub){
 			if(self.submittedPub().trim().toUpperCase() === pub.name.trim().toUpperCase()){
