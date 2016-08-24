@@ -1,16 +1,17 @@
 //Constructor function for the pubs themselves that compartmentalises important data for each pub
-var Pub = function(name, lat, lng, description, imgUrl, rating, ratingUrl) {
+var Pub = function(name, lat, lng, description, imgUrl, rating, ratingUrl, url) {
 	var self=this;
 	this.name=name;
 	this.lat=lat;
+  this.url = url;
 	this.lng = lng;
 	this.imgURL = imgUrl;
 	this.rating = rating;
 	this.ratingURL = ratingUrl;
 	this.description = description;
 	this.displayOnList=ko.observable(true);
-  this.infoWindowContent = `<div id="content"><img src=${self.imgURL} alt="Picture of pub"><p align="right"><b>Yelp Rating:</b></p> <img src=${self.ratingURL} alt=${self.rating} align="right"><h1 id='name'> ${self.name} </h1><div id='bodyContent'><p><b>
-    Yelp Review Snippet: <br> </b>  ${self.description}</p></div></div>`;
+  this.infoWindowContent = `<div id="content" style="max-width: 250px"><a href=${self.url} target="_blank"><div style="display: inline-block" id="titleContent"><img style="padding-bottom: 1px" src=${self.imgURL} alt="Picture of pub"><p><b>Yelp Rating:</b></p>
+  <img src=${self.ratingURL} alt=${self.rating} align="right"><h1 id='name'> ${self.name} </h1></div></a><div id='bodyContent'>${self.description}</div></div>`;
 };
 
 //Method that allows a pub-associated marker to be animated. Avoided difficulties with scoping that I encountered with other
@@ -88,9 +89,10 @@ var settings = {
   success: function(results) {
   	request = results;
     var newPub;
+    console.log(results);
     //Creates a new instance of the Pub class from the JSON object returned from Yelp API
     results.businesses.forEach(function(pub){
-    	newPub = new Pub (pub.name, pub.location.coordinate.latitude, pub.location.coordinate.longitude, pub.snippet_text, pub.image_url, pub.rating, pub.rating_img_url);
+    	newPub = new Pub (pub.name, pub.location.coordinate.latitude, pub.location.coordinate.longitude, pub.snippet_text, pub.image_url, pub.rating, pub.rating_img_url, pub.url);
       //I couldn't get the geographical filters in the Yelp API request to filter my search results to pubs within Galway city,
       //so I decided to work around this issue by filtering the returned JSON based on geographical data. The following 'if' statement
       //specifies geographic location by a southwest latitude/longitude and a northeast latitude/longitude geographic coordinate.
