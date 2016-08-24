@@ -13,20 +13,24 @@
 <body style="background-image: url(img/galway_background.jpg); background-repeat:no-repeat;">
 	<div style="text-align: center; height:100%; width:100%" id="main">
 		<div class="title-block" style="max-width: 500px; background-color: #800; color: #fff; text-align: center">
-			<h1 style="color: #ffcc00; margin-top: 50px; padding-top: 20px">
+			<h1 id="search-title" style="color: #ffcc00; margin-top: 50px; padding-top: 20px">
 				Galway Pub Finder
 			</h1>
 			<p style="margin-top: 5px">Type a pub's name into the search bar to get started.</p>
 			<div id="search-bar">
-				<form data-bind="submit: checkSubmittedPub">
-					<p style="text-align: center">Search: <input data-bind="value: userSearchInput, valueUpdate: 'keyup'">
-						<button type="submit" data-bind=""> Click to Search! </button>
+				<!-- <form data-bind="submit: checkSubmittedPub"> -->
+
+					<p style="text-align: center">Search: <input id="search-box" data-bind="value: userSearchInput, valueUpdate: 'keyup'">
+						<button type="submit" data-bind="click: checkSubmittedPub"> Click to Search! </button>
 					</p>
+					<button data-bind="click: clearSearchBox">
+						Clear
+					</button>
 					<br>
 					<hr style="background-color: #000080; height: 5px; border: 0" >
 					<h3 data-bind="text: noPubFoundMessage, visible: noPubFoundBoolean">
 					</h3>
-				</form>
+
 			</div>
 		</div>
 

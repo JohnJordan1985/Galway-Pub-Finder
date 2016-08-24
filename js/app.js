@@ -81,15 +81,28 @@ var ViewModel = function(){
 		infoWindow.close();
 		// This line was causing noPubFound message to display if there was a matching pub,
 		// but there wasn't an exact search term match, e.g. 'The Dail Bar' differs from 'Dail'
-		//self.noPubFoundBoolean(true);
+		// until I amended 'for' loop on pubModelArray
+		self.noPubFoundBoolean(true);
 		self.submittedPub(self.userSearchInput());
+
+		// Altered the for loop to that used in displayLiveSearch, so that partial matches with submitted
+		// search result in pubs being displayed
+
 		pubModelArray().forEach(function(pub){
-			if(self.submittedPub().trim().toUpperCase() === pub.name.trim().toUpperCase()){
+			if(pub.name.trim().toUpperCase().indexOf(self.submittedPub().trim().toUpperCase()) >= 0){
 				pub.openPubOnMap(map);
 				//Cancels default "No such pub found" message that would appear to user if no such pub found.
 				self.noPubFoundBoolean(false);
 			}
 		});
+
+		// pubModelArray().forEach(function(pub){
+		// 	if(self.submittedPub().trim().toUpperCase() === pub.name.trim().toUpperCase()){
+		// 		pub.openPubOnMap(map);
+		// 		//Cancels default "No such pub found" message that would appear to user if no such pub found.
+		// 		self.noPubFoundBoolean(false);
+		// 	}
+		// });
 	};
 
 	//Function that uses observables to continually refresh the list view based on user input
@@ -111,6 +124,12 @@ var ViewModel = function(){
 				pub.marker.setVisible(pub.displayOnList());
 			}
 		});
+	};
+
+	//Function that clears search box when Clear button pressed
+
+	this.clearSearchBox = function(){
+		var target = $("#search-box").val('');
 	};
 
 };
