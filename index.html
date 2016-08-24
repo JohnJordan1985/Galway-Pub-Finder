@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Galway Pubs</title>
+	<link rel="stylesheet" href="css/styles.css">
+	<style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; }
+    </style>
+</head>
+<body style="background-image: url(img/galway_background.jpg); background-repeat:no-repeat;">
+	<div style="text-align: center; height:100%; width:100%" id="main">
+		<div class="title-block" style="max-width: 500px; background-color: #800; color: #fff; text-align: center">
+			<h1 style="color: #ffcc00; margin-top: 50px; padding-top: 20px">
+				Galway Pub Finder
+			</h1>
+			<p style="margin-top: 5px">Type a pub's name into the search bar to get started.</p>
+			<div id="search-bar">
+				<form data-bind="submit: checkSubmittedPub">
+					<p style="text-align: center">Search: <input data-bind="value: userSearchInput, valueUpdate: 'keyup'">
+						<button type="submit" data-bind=""> Click to Search! </button>
+					</p>
+					<br>
+					<hr style="background-color: #000080; height: 5px; border: 0" >
+					<h3 data-bind="text: noPubFoundMessage, visible: noPubFoundBoolean">
+					</h3>
+				</form>
+			</div>
+		</div>
+
+		<div class ="wrapper" id="list">
+			<div id="yelp-element"></div>
+			<div class="overlay" id="list-two-columns">
+				<ul data-bind="foreach: pubModelArray">
+					<li data-bind="text: name, click: $parent.displayClickedPubOnMap, visible: displayOnList"></li>
+				</ul>
+
+			</div>
+
+			<div class="map" id="map"></div>
+
+
+		</div>
+
+	</div>
+
+	<script src="js/libraries/knockout-3.4.0.js"></script>
+	<script src="js/libraries/jQuery.js"></script>
+	<script src="js/libraries/oauth-signature/dist/oauth-signature.js"></script>
+	<script src="js/model/model.js"></script>
+	<script src="js/app.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_6Xe1Ai1_9bby8ApXpXuVKBQ0RZkdMWw&callback=mapDelay" onerror="googleError()">
+    </script>
+</body>
+</html>

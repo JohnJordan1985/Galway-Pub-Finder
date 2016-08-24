@@ -1,0 +1,52 @@
+* {
+	box-sizing: border-box;
+	position: relative;
+}
+
+ul{
+  width:100%;
+  margin-bottom:20px;
+
+}
+
+/* Divides list items into three columns*/
+li{
+  width: 33%;
+  float:left;
+  display:inline;
+}
+/* Adjusts API in response to changing device dimensions*/
+.responsive-image {
+	padding: 10px;
+	width: 100%;
+	height: auto;
+}
+
+/* Provides parent container for overlay div and specifies height and width for Google Map API*/
+.wrapper {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	max-width: 1200px
+}
+
+/* Uses absolute positioning and z-indexing to overlap pub list over Google map*/
+.overlay {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 99;
+	color: #fff;
+	background-color: #800;
+	padding-bottom: 10px;
+	border-bottom: 5px solid #000080;
+}
+
+div.wrapper {
+	margin: 0 auto 0 auto;
+
+}
+
+div.title-block {
+	margin: 0 auto 0 auto;
+}
