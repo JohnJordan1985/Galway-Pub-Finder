@@ -102,7 +102,7 @@ var settings = {
   },
   error: function() {
     // In the event of a failed AJAX request, the user is informed
-    $("#yelp-element").append("<br><h1> Data could not be returned from Yelp. Please check your internet connection and reload the page.</h1>");
+    $("#yelp-element").html("<br><h2> Data could not be returned from Yelp. Please check your internet connection and reload the page.</h2>");
   }
 };
 

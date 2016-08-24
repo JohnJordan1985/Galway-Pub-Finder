@@ -8,14 +8,14 @@ function mapDelay(){
 	} else if(request !== "") {
 		initMap();
 	} else if(request === "" && counter > 20){
-		$("#yelp-element").append("<br><h2> Yelp took too long to load data. Please check your internet connection and reload the page.</h2>");
+		$("#yelp-element").html("<br><h2> Yelp took too long to load data. Please check your internet connection and reload the page.</h2>");
 		initMap();
 	}
 }
 
 //In the event of a failed request to the Google Maps API, the user is informed
 function googleError() {
-	$("#map").append("<br><h1>Google Maps could not be loaded. Please check your internet connection and reload the page.</h1>");
+	$("#map").html("<br><h2>Google Maps could not be loaded. Please check your internet connection and reload the page.</h2>");
 }
 
 //Creates map with markers for each of the Pubs in the model array
