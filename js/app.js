@@ -8,7 +8,7 @@ function mapDelay(){
 	} else if(request !== "") {
 		initMap();
 	} else if(request === "" && counter > 20){
-		$("#yelp-element").append("<br><h1> Yelp took too long to load data. Please check your internet connection and reload the page.</h1>");
+		$("#yelp-element").append("<br><h2> Yelp took too long to load data. Please check your internet connection and reload the page.</h2>");
 		initMap();
 	}
 }
