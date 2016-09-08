@@ -111,25 +111,39 @@ var ViewModel = function(){
 		//closes any currently open infowindow from previously successful pub searches when user clears search box
 		if(self.userSearchInput() === ""){
 			infoWindow.close();
-		}
-		//For loop that displays pubs on the list, as well as their respective markers, for as long as they match
-		//what the user has currently entered, but not submitted, into the input box
-		pubModelArray().forEach(function(pub){
-			if(pub.name.trim().toUpperCase().indexOf(self.userSearchInput().trim().toUpperCase()) >= 0){
+			// If input box is empty, e.g. after being reset by 'clearSearchBox' function,
+			// iterate through pub list and display all of them
+			pubModelArray().forEach(function(pub){
 				pub.displayOnList(true);
 				pub.marker.setVisible(pub.displayOnList());
+			});
+		}
+		else {
+			//For loop that displays pubs on the list, as well as their respective markers, for as long as they match
+			//what the user has currently entered, but not submitted, into the input box
+			pubModelArray().forEach(function(pub){
+				if(pub.name.trim().toUpperCase().indexOf(self.userSearchInput().trim().toUpperCase()) >= 0){
+					pub.displayOnList(true);
+					pub.marker.setVisible(pub.displayOnList());
 
-			} else {
-				pub.displayOnList(false);
-				pub.marker.setVisible(pub.displayOnList());
-			}
-		});
+				} else {
+					pub.displayOnList(false);
+					pub.marker.setVisible(pub.displayOnList());
+				}
+			});
+		}
 	};
 
 	//Function that clears search box when Clear button pressed
 
 	this.clearSearchBox = function(){
-		var target = $("#search-box").val('');
+		// Empties input box of previous input
+		$("#search-box").val('');
+
+		// Empties value of userSearchInput observable
+		self.userSearchInput('');
+		// Calls this.displaySearchLive function in order to update pub list that is being displayed
+		this.displaySearchLive();
 	};
 
 };
