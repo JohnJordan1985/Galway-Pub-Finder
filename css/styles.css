@@ -27,7 +27,7 @@ li{
 	position: relative;
 	height: 100%;
 	width: 100%;
-	max-width: 1200px
+	max-width: 45em;
 }
 
 /* Uses absolute positioning and z-indexing to overlap pub list over Google map*/
