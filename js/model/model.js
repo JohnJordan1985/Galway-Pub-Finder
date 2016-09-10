@@ -14,6 +14,8 @@ var Pub = function(name, lat, lng, description, imgUrl, rating, ratingUrl, url) 
   <img src=${self.ratingURL} alt=${self.rating} align="right"><h1 id='name'> ${self.name} </h1></div></a><div id='bodyContent'>${self.description}</div></div>`;
 };
 
+
+
 //Method that allows a pub-associated marker to be animated. Avoided difficulties with scoping that I encountered with other
 //implentations of this functionality
 
@@ -27,13 +29,22 @@ Pub.prototype.bounceMarker = function(){
 		}, 4260);
 };
 
+// Function that moves map North so that info window is displayed in view port, rather than being cut off my floating menu
+function moveMap() {
+  map.panBy(0,-220);
+};
+
 //Method that encapsulates all the code needed to open info-window of pub, and animate its marker when needed
 
 Pub.prototype.openPubOnMap = function(map){
+
   var self=this;
+
   self.infoWindow.setContent(self.infoWindowContent);
   self.infoWindow.open(map, self.marker);
   self.bounceMarker();
+  setTimeout(moveMap, 10);
+
 };
 
 // knockout observable array that holds the actual pub objects

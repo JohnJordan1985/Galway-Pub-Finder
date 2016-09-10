@@ -6,12 +6,13 @@
 	<link rel="icon" href="img/favicon_Galway_city.png" type="image" sizes="16x16">
 	<title>Galway Pubs</title>
 	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Uncial+Antiqua">
 	<style type="text/css">
       html, body { height: 100%; margin: 0; padding: 0; }
       #map { height: 100%; }
     </style>
 </head>
-<body style="background-image: url(img/galway_background.jpg); background-repeat:no-repeat;">
+<body>
 	<div style="text-align: center; height:100%; width:100%" id="main">
 		<div class="title-block" style="max-width: 500px; background-color: #800; color: #fff; text-align: center">
 			<h1 id="search-title" style="color: #ffcc00; margin-top: 50px; padding-top: 20px">
@@ -22,11 +23,13 @@
 				<form id="pub-form" data-bind="submit: checkSubmittedPub">
 
 					<p style="text-align: center">Search: <input id="search-box" data-bind="value: userSearchInput, valueUpdate: 'keyup'">
-						<button type="submit" data-bind="click: checkSubmittedPub"> Click to Search! </button>
+						<button id="search" type="submit" data-bind="click: checkSubmittedPub"> SEARCH </button>
+						&nbsp;
+						<button id="clear" data-bind="click: clearSearchBox">
+						CLEAR
+						</button>
 					</p>
-					<button data-bind="click: clearSearchBox">
-						Clear
-					</button>
+
 
 					<br>
 					<hr style="background-color: #000080; height: 5px; border: 0" >
@@ -39,19 +42,19 @@
 		</div>
 
 		<div class ="wrapper" id="list">
-			<div id="yelp-element" style="background-color: #800; color: #fff;"></div>
+			<div id="yelp-element" style="background-color: #800; color: #fff;">
+			</div>
 			<div class="overlay" id="list-two-columns">
 				<ul data-bind="foreach: pubModelArray">
-					<li data-bind="text: name, click: $parent.displayClickedPubOnMap, visible: displayOnList"></li>
+					<li data-bind="text: name, click: $parent.displayClickedPubOnMap, visible: displayOnList">
+					</li>
 				</ul>
 
 			</div>
 
-			<div style="background-color: #800;" class="map" id="map"></div>
-
-
+			<div style="background-color: #800;" class="map" id="map">
+			</div>
 		</div>
-
 	</div>
 
 	<script src="js/libraries/knockout-3.4.0.js"></script>

@@ -1,6 +1,19 @@
 * {
 	box-sizing: border-box;
 	position: relative;
+	font-family: 'Calibri', sans-serif;
+}
+
+body {
+	background-image: url(../img/galway_background.jpg);
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-attachment: fixed;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	background-size:cover;
+
 }
 
 ul{
@@ -14,6 +27,10 @@ li{
   width: 33%;
   float:left;
   display:inline;
+}
+
+#search-title {
+	font-family: 'Uncial Antiqua', cursive;
 }
 /* Adjusts API in response to changing device dimensions*/
 .responsive-image {
@@ -58,4 +75,31 @@ li {
 
 li:hover {
 	background-color: #000080;
+}
+/* To draw user's attention to a failed search term */
+h3 {
+	background-color: #ffcc00;
+	color: black;
+}
+
+button {
+
+	width: 60px;
+	height: 25px;
+    border-style: none;
+    border-width: 2px;
+    /*padding-bottom: 0.5em;*/
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8em;
+    margin: 0 auto;
+}
+
+button#search {
+	background-color: #ffcc00;
+}
+
+button#clear {
+	background-color: #000080;
+	color: #ffffff;
 }

@@ -22,8 +22,8 @@ function googleError() {
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 53.272780, lng: -9.053138},
-    zoom: 16
+    center: {lat: 53.275800, lng: -9.053138},
+    zoom: 15
   });
 
   infoWindow = new google.maps.InfoWindow();
@@ -71,6 +71,7 @@ var ViewModel = function(){
 	//Displays pub on map when a pub is selected by the user from the list view. Calls method of Pub class
 	this.displayClickedPubOnMap = function(){
 		this.openPubOnMap(map);
+
 	};
 
 	//Checks submitted pub name against Model, and displays the pub if search is successful; advises the user if no such
@@ -144,6 +145,9 @@ var ViewModel = function(){
 		self.userSearchInput('');
 		// Calls this.displaySearchLive function in order to update pub list that is being displayed
 		this.displaySearchLive();
+
+		//Removes previous message to user that no pub had been found
+		this.noPubFoundBoolean(false);
 	};
 
 };
