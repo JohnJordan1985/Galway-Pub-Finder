@@ -50,7 +50,7 @@ li{
 /* Uses absolute positioning and z-indexing to overlap pub list over Google map*/
 .overlay {
 	position: absolute;
-	top: 0px;
+	bottom: 0px;
 	left: 0px;
 	z-index: 99;
 	color: #fff;

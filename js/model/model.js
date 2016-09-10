@@ -31,7 +31,7 @@ Pub.prototype.bounceMarker = function(){
 
 // Function that moves map North so that info window is displayed in view port, rather than being cut off my floating menu
 function moveMap() {
-  map.panBy(0,-220);
+  map.panBy(0,220);
 };
 
 //Method that encapsulates all the code needed to open info-window of pub, and animate its marker when needed
