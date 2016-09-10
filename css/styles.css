@@ -4,6 +4,19 @@
 	font-family: 'Calibri', sans-serif;
 }
 
+@media only screen and (max-device-width: 480px) {
+
+	.wrapper {
+		margin: 0 auto 0 auto;
+		position: relative;
+		height: 750px;
+		width: 100%;
+		max-width: 380px;
+	}
+
+
+}
+
 body {
 	background-image: url(../img/galway_background.jpg);
 	background-position:center center;
@@ -41,11 +54,14 @@ li{
 
 /* Provides parent container for overlay div and specifies height and width for Google Map API*/
 .wrapper {
+	margin: 0 auto 0 auto;
 	position: relative;
-	height: 100%;
+	height: 750px;
 	width: 100%;
 	max-width: 45em;
 }
+
+
 
 /* Uses absolute positioning and z-indexing to overlap pub list over Google map*/
 .overlay {
@@ -57,12 +73,6 @@ li{
 	background-color: #800;
 	padding-bottom: 10px;
 	border-bottom: 5px solid #000080;
-}
-
-div.wrapper {
-	margin: 0 auto 0 auto;
-	height: 750px;
-
 }
 
 div.title-block {
