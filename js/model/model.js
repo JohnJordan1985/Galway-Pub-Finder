@@ -43,7 +43,8 @@ Pub.prototype.openPubOnMap = function(map){
   self.infoWindow.setContent(self.infoWindowContent);
   self.infoWindow.open(map, self.marker);
   self.bounceMarker();
-  setTimeout(moveMap, 10);
+  // Removed call to this function as resulted in jerky screen movements
+  //setTimeout(moveMap, 1);
 
 };
 
